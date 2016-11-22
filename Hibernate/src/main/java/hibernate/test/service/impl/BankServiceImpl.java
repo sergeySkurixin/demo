@@ -6,15 +6,20 @@ import hibernate.test.repository.BankRepository;
 import hibernate.test.service.BankService;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.logging.ErrorManager;
 
 /**
  * Created by скурихин on 21.11.2016.
  */
 @Service
 public class BankServiceImpl implements BankService {
+
+    @Autowired
+    private LocalContainerEntityManagerFactoryBean factoryBean;
 
     @Autowired
     private BankRepository bankRepository;

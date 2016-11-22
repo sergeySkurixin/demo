@@ -1,6 +1,8 @@
 package hibernate.test.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by скурихин on 21.11.2016.
@@ -13,22 +15,28 @@ public class Client {
     private Long id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER,optional=true)
-    @JoinTable(name = "bank_client",
-            joinColumns = @JoinColumn(name = "id_client"),
-            inverseJoinColumns = @JoinColumn(name = "id_bank"))
-    private Bank bank;
+//    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+//    @JoinTable(name = "bank_client",
+//            joinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "id_bank", referencedColumnName = "id"))
+//    private Bank bank;
+
+//    @Column(table = "bank_client", name = "amount")
+//    private Long amount;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private List<BankToClient> clientList;
 
     protected Client() {
     }
 
-    public Client(String name, Bank bank) {
-        this.name = name;
-        this.bank = bank;
+    public Client(String name) {
+        this(name,new ArrayList<BankToClient>());
     }
 
-    public Client(String name) {
+    public Client(String name, List<BankToClient> clientList) {
         this.name = name;
+        this.clientList = clientList;
     }
 
     public Long getId() {
@@ -47,12 +55,12 @@ public class Client {
         this.name = name;
     }
 
-    public Bank getBank() {
-        return bank;
+    public List<BankToClient> getClientList() {
+        return clientList;
     }
 
-    public void setBank(Bank bank) {
-        this.bank = bank;
+    public void setClientList(List<BankToClient> clientList) {
+        this.clientList = clientList;
     }
 
     @Override

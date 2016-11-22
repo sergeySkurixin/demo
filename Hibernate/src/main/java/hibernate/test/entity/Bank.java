@@ -1,8 +1,8 @@
 package hibernate.test.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by скурихин on 21.11.2016.
@@ -16,13 +16,13 @@ public class Bank {
     private String name;
 
     @OneToMany(mappedBy = "bank", fetch = FetchType.EAGER)
-    private List<Client> clients;
+    private List<BankToClient> bankList;
 
     protected Bank() {
     }
 
     public Bank(String name) {
-        this.name = name;
+        this(name, new ArrayList<BankToClient>());
     }
 
     public Bank(Long id, String name) {
@@ -30,9 +30,9 @@ public class Bank {
         this.name = name;
     }
 
-    public Bank(String name, List<Client> clients) {
+    public Bank(String name, List<BankToClient> bankList) {
         this.name = name;
-        this.clients = clients;
+        this.bankList = bankList;
     }
 
     public Long getId() {
@@ -51,12 +51,12 @@ public class Bank {
         this.name = name;
     }
 
-    public List<Client> getClients() {
-        return clients;
+    public List<BankToClient> getBankList() {
+        return bankList;
     }
 
-    public void setClients(List<Client> clients) {
-        this.clients = clients;
+    public void setBankList(List<BankToClient> bankList) {
+        this.bankList = bankList;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Bank {
         return "Bank{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", clients=" + (clients == null ? "null" : clients) +
+                ", bankList=" + bankList.toString() +
                 '}';
     }
 }
