@@ -37,7 +37,10 @@ public class App {
         Client client1 = clientService.addClient(rob);
         Client client2 = clientService.addClient(fill);
 
-        BankToClient bankToClient = mainService.addClientToBank(vtb, bob);
+        mainService.addClientToBank(vtb, bob);
+        mainService.addClientToBank(vtb, rob);
+        mainService.addClientToBank(gazProm, rob);
+        mainService.addClientToBank(gazProm, fill);
 
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println(bankService.getAll().toString());

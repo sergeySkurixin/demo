@@ -17,7 +17,7 @@ public class Main {
 //        persons.stream().filter(p -> p.getName().equals("Bob"))
 //                .forEach(p -> System.out.println(p.getName()));
 
-//        Streams.of(persons).filter((Person p) ->p.getName().equals("Bob"));
+        //Streams.of(persons).filter((Person p) ->p.getName().equals("Bob"));
 
 //        Streams.of(persons).forEach(System.out::print);
 

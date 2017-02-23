@@ -21,6 +21,23 @@ public class BankToClient {
     @JoinColumn(name = "user_id")
     private Client client;
 
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public BankToClient(Bank bank, Client client, long amount) {
+
+        this.bank = bank;
+        this.client = client;
+        this.amount = amount;
+    }
+
+    private long amount;
+
     protected BankToClient() {
     }
 

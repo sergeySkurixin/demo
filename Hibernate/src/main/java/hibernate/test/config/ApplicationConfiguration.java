@@ -44,7 +44,7 @@ public class ApplicationConfiguration {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        factoryBean.setPackagesToScan(new String[]{"hibernate.test"});
+        factoryBean.setPackagesToScan(new String[]{"hibernate.testirovanie"});
 
         factoryBean.setJpaProperties(hibernateProperties());
 

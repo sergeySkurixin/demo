@@ -3,12 +3,15 @@ package MyOwnStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 /**
  * Created by скурихин on 13.09.2016.
  */
 public class Streams<T> {
+
+    interface Predicate<Person>{
+        boolean test(Person o);
+    }
     private List<T> list;
     private static Streams MyStream;
 

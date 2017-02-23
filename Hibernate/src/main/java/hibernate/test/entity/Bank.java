@@ -67,4 +67,25 @@ public class Bank {
                 ", bankList=" + bankList.toString() +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bank bank = (Bank) o;
+
+        if (id != null ? !id.equals(bank.id) : bank.id != null) return false;
+        if (name != null ? !name.equals(bank.name) : bank.name != null) return false;
+        return bankList != null ? bankList.equals(bank.bankList) : bank.bankList == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (bankList != null ? bankList.hashCode() : 0);
+        return result;
+    }
 }
